@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>教室檔案工具</title>
+<style type="text/css">
+body{font-size:12px;font-family:Arial,Helvetica}
+table{text-align:left;border-spacing:0px;font-weight:normal}
+div{padding:10px}
+img{border:#000 1px solid}
+
+a:link,a:visited,a:active{text-decoration:none;color:#00F}
+a:hover{text-decoration:none;color:#F00}
+
+.title{font-weight:bold;font-size:15px;line-height:22px}
+.step{font-weight:bold;line-height:20px}
+.win_act{border:#000 1px dashed;border-radius:5px}
+</style>
+</head>
+
+<body style="margin:20px">
+<div style="background-color:#36C;border-radius:5px;font-weight:bold;color:#FFF">
+	<ul>
+		<li>過程中若出現「Internet Explorer 已限制這個網頁執行指令檔或可以存取您電腦的 ActiveX 控制項」，請點選並「允許被封鎖的內容」。</li>
+		<li>過程中若出現「安全性警告」也請點選「是」讓「檔案執行主動式內容」，並「允許相互作用」。</li>
+	</ul>
+</div>
+<div style="font-weight:bold"><br />[ 輔仁大學資訊中心 - 電腦教室檔案上傳下載工具 ]</div>
+<ol>此工具包含三種功能：<br />&nbsp;
+	<li><span class="title"><a href="#op_act" onclick="act_win('1')">老師開放上課教材（考試題目）讓教室學生下載</a></span><br />
+		學生無法修改刪除老師檔案。</li><br />
+	<li><span class="title"><a href="#op_act" onclick="act_win('2')">教室學生上傳檔案到老師機的<span style="color:#F00">公用</span>資料夾</a></span><br />
+		學生看得到所有人上傳的檔案，但無法下載、開啟、修改、刪除。<br />
+		此方式無法查核上傳者真實身分（可用他人名義上傳），適合不記名上傳，若需驗證身分者，請使用第三種方式。</li><br />
+	<li><span class="title"><a href="#op_act" onclick="act_win('3')">教室學生上傳檔案到老師機的<span style="color:#F00">個人</span>資料夾</a></span><br />
+		學生看不到其他人的檔案，可修改、刪除自己上傳的檔案。<br />
+		需設定座位表（電腦編號與學號對應表）。</li>
+</ol>
+<ul style="color:#960">
+	<li>請點選標題查閱詳細操作方式。</li>
+	<li>以上功能可互相搭配，同時使用。</li>
+	<li>不論上傳下載，檔名請使用英數字母。</li>
+	<li>請老師務必利用隨身碟將檔案帶走，避免課後電腦還原而遺失。</li>
+</ul>
+
+<a name="op_act"></a>
+<div id="win1" class="win_act" style="display:none">
+<span class="title">老師開放上課教材（考試題目）讓教室學生下載 - 操作說明</span>
+<ul>
+	<li><span class="step">步驟1.</span><br />請老師將檔案置於「本機磁碟(C:) > upfile > 下載檔案」資料夾中。</li><br />
+	<li><span class="step">步驟2.</span><br /><a href="javascript:void(0)" onclick="window.open('[ conf ]/win1_s.html','_blank','width=620,height=800,scrollbars=yes,resizable=yes')">學生下載方式</a>（可將畫面投出，供學生參考。）</li>
+</ul>
+</div>
+
+<div id="win2" class="win_act" style="display:none">
+<span class="title">教室學生上傳檔案到老師機的<span style="color:#F00">公用</span>資料夾 - 操作說明</span>
+<ul>
+	<li><span class="step">步驟1.</span><br /><a href="javascript:void(0)" onclick="window.open('[ conf ]/win2_s.html','_blank','width=620,height=800,scrollbars=yes,resizable=yes')">學生上傳方式</a>（可將畫面投出，供學生參考），<span style="color:#F00;font-weight:bold">請提醒學生上傳檔案的檔名必須為英數字元</span>。</li><br />
+	<li><span class="step">步驟2.</span><br />老師可於「本機磁碟(C:) > upfile > 上傳檔案 - 公用資料夾」資料夾中查閱學生上傳的檔案。 </li><br />
+</ul>
+</div>
+
+<div id="win3" class="win_act" style="display:none">
+<span class="title">教室學生上傳檔案到老師機的<span style="color:#F00">個人</span>資料夾 - 操作說明</span>
+<ul>
+	<li><span class="step">步驟1.</span><br />設定課程名稱與電腦座位表。
+		<table style="width:100%">
+			<tr style="vertical-align:top">
+				<td style="width:280px">
+					<table style="width:100%">
+						<tr>
+							<td style="text-align:right;width:90px">課程名稱：</td>
+							<td><input type="text" id="name" style="width:90%" value="" onblur="this.value=act_clear(this.value)" /></td>
+						</tr>
+						<tr>
+							<td style="text-align:right">電腦座位設定：</td>
+							<td><textarea id="cpt" style="width:90%;height:500px" onblur="this.value=act_clear(this.value)"></textarea></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><input type="button" id="okb" value="寫入設定" onclick="act_set();" /></td>
+						</tr>
+					</table>
+				</td>
+				<td style="width:200px;background-color:#F5F5F5;padding:7px">電腦座位設定結果
+					<p>上傳檔案資料夾：<br /><span id="msg_name" style="color:#900"></span></p>
+					<p>上傳帳號限制：<br /><span id="msg_cpt" style="color:#900"></span></p></td>
+				<td style="padding:7px">電腦座位設定說明<p>
+					<ol>
+						<li>若您設定「課程名稱」，系統會建立該名稱的資料夾於「本機磁碟(C:) > upfile」下，並將上傳檔案目錄指到該資料夾。若無設定，則上傳檔案目錄指到「本機磁碟(C:) > upfile > 上傳檔案-個人資料夾」。</li><br />
+						<li>電腦座位設定格式：電腦編號-可上傳檔案的帳號<br />例如：1-987654321，即為電腦1僅允許帳號（學號）987654321上傳檔案到說明1資料夾下的987654321資料夾。</li><br />
+						<li>若電腦1不開放上傳檔案，您只要不設定帳號即可（例如：1-）。</li><br />
+						<li>建議您課前於文字檔完成座位設定（<a href="[ conf ]/set_example.txt" target="_blank">設定範例檔</a>），上課時只要將設定內容複製貼上設定介面即可。</li>
+					</ol></p>
+				</td>
+			</tr>
+		</table></li><br />
+	<li><span class="step">步驟2.</span><br />寫入設定後，請於檔案「本機磁碟(C:) > upfile > 重新啟動FTP服務.bat」按滑鼠右鍵「以系統管理員身分執行」，讓系統載入步驟1.的設定。</li><br />
+	<li><span class="step">步驟3.</span><br /><a href="javascript:void(0)" onclick="window.open('[ conf ]/win3_s.html','_blank','width=620,height=800,scrollbars=yes,resizable=yes')">學生上傳方式</a>（可將畫面投出，供學生參考），<span style="color:#F00;font-weight:bold">請提醒學生上傳檔案的檔名必須為英數字元</span>。</li><br />
+	<li><span class="step">步驟4.</span><br />老師可於步驟1.中的「上傳檔案資料夾」中查閱學生上傳的檔案。</li>
+</ul>
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="[ conf ]\load_ip.js"></script>
+<script type="text/javascript" src="[ conf ]\load_cpt.js"></script>
+<script type="text/javascript">
+var fso = new ActiveXObject("Scripting.FileSystemObject");
+act_show_msg();
+
+function act_set(){
+	if(confirm("寫入設定　確定？")){
+		document.getElementById("okb").disabled = true;
+
+		sys_name = document.getElementById("name").value;
+
+		for(num in sys_cpt)
+			sys_cpt[num] = "";
+		cpt = (document.getElementById("cpt").value.replace(/\n/gi,"-")).split("-");
+		alln = cpt.length;
+		for(i=0;i<alln;i+=2){
+			op = parseInt(cpt[i],10)-1;
+			if(typeof(sys_cpt[op])!="undefined")
+				sys_cpt[op] = cpt[i+1];
+		}
+		msg = "";
+		for(num in sys_cpt)
+			msg += "\""+sys_cpt[num]+"\",";
+		if(msg!="")
+			msg = msg.substr(0,msg.length-1);
+
+		f = fso.OpenTextFile("C:\\upfile\\[ conf ]\\load_cpt.js",2,true);
+		f.write("//課程名稱");f.WriteBlankLines(1);
+		f.write("sys_name = \""+encodeURIComponent(sys_name)+"\";");f.WriteBlankLines(1);
+		f.write("//[0.1號電腦登入帳號][1.2號電腦登入帳號][2.3號電腦登入帳號]...");f.WriteBlankLines(1);
+		f.write("sys_cpt = Array("+msg+");");
+		f.Close();
+
+		if(sys_name=="")
+			file_name = "上傳檔案-個人資料夾";
+		else
+			file_name = sys_name;
+		if(!fso.FolderExists("C:\\upfile\\"+file_name))
+			fso.CreateFolder("C:\\upfile\\"+file_name);
+		for(num in sys_cpt){
+			if(sys_cpt[num]!="" && !fso.FolderExists("C:\\upfile\\"+file_name+"\\"+sys_cpt[num])){
+				fso.CreateFolder("C:\\upfile\\"+file_name+"\\"+sys_cpt[num]);
+				f_note = fso.CreateTextFile("C:\\upfile\\"+file_name+"\\"+sys_cpt[num]+"\\[ 已進入 "+sys_cpt[num]+" 上傳空間，請將檔案複製於此資料夾 ].txt",true);
+				f_note.Close();
+				f_note = fso.CreateTextFile("C:\\upfile\\"+file_name+"\\"+sys_cpt[num]+"\\[ 上傳檔案檔名請使用英數字元 ].txt",true);
+				f_note.Close();
+			}
+		}
+
+		f = fso.OpenTextFile("C:\\FileZilla Server\\FileZilla Server.xml",2,true);
+		f.write("<FileZillaServer>");f.WriteBlankLines(1);
+		f.write("	<Settings>");f.WriteBlankLines(1);
+		f.write("		<Item name=\"Admin port\" type=\"numeric\">14147</Item>");f.WriteBlankLines(1);
+		f.write("	</Settings>");f.WriteBlankLines(1);
+		f.write("	<Groups />");f.WriteBlankLines(1);
+		f.write("	<Users>");f.WriteBlankLines(1);
+		f.write("		<User Name=\"loadfile\">");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Pass\"></Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Group\"></Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Bypass server userlimit\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"User Limit\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"IP Limit\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Enabled\">1</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Comments\"></Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"ForceSsl\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"8plus3\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<IpFilter>");f.WriteBlankLines(1);
+		f.write("				<Disallowed>");f.WriteBlankLines(1);
+		f.write("					<IP>*</IP>");f.WriteBlankLines(1);
+		f.write("				</Disallowed>");f.WriteBlankLines(1);
+		f.write("				<Allowed>");f.WriteBlankLines(1);
+		f.write("					<IP>"+sys_ip[1]+sys_ip[3]+"/"+sys_ip[4]+"</IP>");f.WriteBlankLines(1);
+		f.write("				</Allowed>");f.WriteBlankLines(1);
+		f.write("			</IpFilter>");f.WriteBlankLines(1);
+		f.write("			<Permissions>");f.WriteBlankLines(1);
+		f.write("				<Permission Dir=\"C:\\upfile\\下載檔案\">");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileRead\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileWrite\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileDelete\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileAppend\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirCreate\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirDelete\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirList\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirSubdirs\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"IsHome\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"AutoCreate\">0</Option>");f.WriteBlankLines(1);
+		f.write("				</Permission>");f.WriteBlankLines(1);
+		f.write("			</Permissions>");f.WriteBlankLines(1);
+		f.write("			<SpeedLimits DlType=\"0\" DlLimit=\"10\" ServerDlLimitBypass=\"0\" UlType=\"0\" UlLimit=\"10\" ServerUlLimitBypass=\"0\">");f.WriteBlankLines(1);
+		f.write("				<Download />");f.WriteBlankLines(1);
+		f.write("				<Upload />");f.WriteBlankLines(1);
+		f.write("			</SpeedLimits>");f.WriteBlankLines(1);
+		f.write("		</User>");f.WriteBlankLines(1);
+		f.write("		<User Name=\"upfile\">");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Pass\"></Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Group\"></Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Bypass server userlimit\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"User Limit\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"IP Limit\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Enabled\">1</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Comments\"></Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"ForceSsl\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"8plus3\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<IpFilter>");f.WriteBlankLines(1);
+		f.write("				<Disallowed>");f.WriteBlankLines(1);
+		f.write("					<IP>*</IP>");f.WriteBlankLines(1);
+		f.write("				</Disallowed>");f.WriteBlankLines(1);
+		f.write("				<Allowed>");f.WriteBlankLines(1);
+		f.write("					<IP>"+sys_ip[1]+sys_ip[3]+"/"+sys_ip[4]+"</IP>");f.WriteBlankLines(1);
+		f.write("				</Allowed>");f.WriteBlankLines(1);
+		f.write("			</IpFilter>");f.WriteBlankLines(1);
+		f.write("			<Permissions>");f.WriteBlankLines(1);
+		f.write("				<Permission Dir=\"C:\\upfile\\上傳檔案-公用資料夾\">");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileRead\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileWrite\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileDelete\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileAppend\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirCreate\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirDelete\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirList\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirSubdirs\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"IsHome\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"AutoCreate\">0</Option>");f.WriteBlankLines(1);
+		f.write("				</Permission>");f.WriteBlankLines(1);
+		f.write("			</Permissions>");f.WriteBlankLines(1);
+		f.write("			<SpeedLimits DlType=\"0\" DlLimit=\"10\" ServerDlLimitBypass=\"0\" UlType=\"0\" UlLimit=\"10\" ServerUlLimitBypass=\"0\">");f.WriteBlankLines(1);
+		f.write("				<Download />");f.WriteBlankLines(1);
+		f.write("				<Upload />");f.WriteBlankLines(1);
+		f.write("			</SpeedLimits>");f.WriteBlankLines(1);
+		f.write("		</User>");f.WriteBlankLines(1);
+
+		for(num in sys_cpt){
+			if(sys_cpt[num]!=""){
+				temp_ip = parseInt(sys_ip[3],10)+parseInt(num,10);
+				if(sys_ip[0]==4)
+					temp_ip = parseInt(temp_ip,10);
+				else
+					temp_ip = parseInt(temp_ip,16);
+
+		f.write("		<User Name=\""+sys_cpt[num]+"\">");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Pass\"></Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Group\"></Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Bypass server userlimit\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"User Limit\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"IP Limit\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Enabled\">1</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"Comments\"></Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"ForceSsl\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<Option Name=\"8plus3\">0</Option>");f.WriteBlankLines(1);
+		f.write("			<IpFilter>");f.WriteBlankLines(1);
+		f.write("				<Disallowed>");f.WriteBlankLines(1);
+		f.write("					<IP>*</IP>");f.WriteBlankLines(1);
+		f.write("				</Disallowed>");f.WriteBlankLines(1);
+		f.write("				<Allowed>");f.WriteBlankLines(1);
+		f.write("					<IP>"+sys_ip[1]+temp_ip+"</IP>");f.WriteBlankLines(1);
+		f.write("				</Allowed>");f.WriteBlankLines(1);
+		f.write("			</IpFilter>");f.WriteBlankLines(1);
+		f.write("			<Permissions>");f.WriteBlankLines(1);
+		f.write("				<Permission Dir=\"C:\\upfile\\"+file_name+"\\"+sys_cpt[num]+"\">");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileRead\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileWrite\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileDelete\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"FileAppend\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirCreate\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirDelete\">0</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirList\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"DirSubdirs\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"IsHome\">1</Option>");f.WriteBlankLines(1);
+		f.write("					<Option Name=\"AutoCreate\">0</Option>");f.WriteBlankLines(1);
+		f.write("				</Permission>");f.WriteBlankLines(1);
+		f.write("			</Permissions>");f.WriteBlankLines(1);
+		f.write("			<SpeedLimits DlType=\"0\" DlLimit=\"10\" ServerDlLimitBypass=\"0\" UlType=\"0\" UlLimit=\"10\" ServerUlLimitBypass=\"0\">");f.WriteBlankLines(1);
+		f.write("				<Download />");f.WriteBlankLines(1);
+		f.write("				<Upload />");f.WriteBlankLines(1);
+		f.write("			</SpeedLimits>");f.WriteBlankLines(1);
+		f.write("		</User>");f.WriteBlankLines(1);
+
+			}
+		}
+
+		f.write("	</Users>");f.WriteBlankLines(1);
+		f.write("</FileZillaServer>");f.WriteBlankLines(1);
+		f.Close();
+
+		act_show_msg();
+		document.getElementById("okb").disabled = false;
+		alert("寫入設定完成");
+	}
+}
+
+function act_show_msg(){
+	if(sys_name==""){
+		document.getElementById("name").value = "";
+		document.getElementById("msg_name").innerHTML = "C:\\upfile\\上傳檔案-個人資料夾";
+	}
+	else{
+		sys_name = decodeURIComponent(sys_name);
+		document.getElementById("name").value = sys_name;
+		document.getElementById("msg_name").innerHTML = "C:\\upfile\\"+sys_name;
+	}
+
+	msg = Array("","");
+	for(m0 in sys_cpt){
+		num = parseInt(m0,10)+1;
+		msg[0] += num+"-"+sys_cpt[m0]+"\n";
+		if(sys_cpt[m0]!="")
+			msg[1] += "電腦"+num+" . "+sys_cpt[m0]+" 可連線<br />";
+	}
+	document.getElementById("cpt").value = msg[0];
+	document.getElementById("msg_cpt").innerHTML = msg[1];
+}
+
+function act_win(num){
+	document.getElementById("win1").style.display = "none";
+	document.getElementById("win2").style.display = "none";
+	document.getElementById("win3").style.display = "none";
+	document.getElementById("win"+num).style.display = "block";
+}
+
+function act_clear(str){
+	return str.replace(/\"/gi,"");
+}
+</script>
